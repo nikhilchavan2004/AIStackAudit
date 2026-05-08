@@ -1,7 +1,9 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const AuditForm = () => {
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     tool: "",
     plan: "",
@@ -32,12 +34,28 @@ const AuditForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
 
-    console.log(formData);
-  };
+  e.preventDefault();
 
+  try {
+
+    const response = await axios.post(
+      "http://localhost:5000/api/audit",
+      formData
+    );
+
+   navigate(`/results/${response.data.auditId}`, {
+      state: response.data,
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+};
   return (
     <div className="max-w-3xl mx-auto bg-zinc-900 p-8 rounded-2xl border border-zinc-800">
 
