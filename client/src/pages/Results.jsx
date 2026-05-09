@@ -49,7 +49,7 @@ const copyLink = async () => {
           setLoading(true);
 
           const response = await axios.get(
-            `http://localhost:5000/api/audit/${id}`
+            `${import.meta.env.VITE_API_URL}/api/audit/${id}`
           );
 
           setResult(response.data);
