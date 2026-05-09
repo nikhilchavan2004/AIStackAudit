@@ -59,9 +59,17 @@ const LeadForm = ({ auditId }) => {
       {
         success ? (
 
-          <div className="bg-green-500/20 border border-green-500 p-4 rounded-xl text-green-300">
-            Audit saved successfully.
-          </div>
+         <div className="bg-green-500/20 border border-green-500 p-5 rounded-xl text-green-300">
+
+  <h3 className="text-2xl font-bold mb-2">
+    Audit Saved Successfully
+  </h3>
+
+  <p>
+    A confirmation email has been sent.
+  </p>
+
+</div>
 
         ) : (
 
