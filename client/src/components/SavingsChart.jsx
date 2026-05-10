@@ -12,11 +12,15 @@ const SavingsChart = ({ result }) => {
  const data = [
   {
     name: "Current Spend",
-    amount: Number(result.spend),
+    amount: Number(
+      result.currentSpend || result.spend || 0
+    ),
   },
   {
     name: "Potential Savings",
-    amount: Number(result.savings),
+    amount: Number(
+      result.savings || 0
+    ),
   },
 ];
   return (
