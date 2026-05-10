@@ -1,89 +1,86 @@
-const auditEngine = ({
-  tool,
-  plan,
-  spend,
-  seats,
-  teamSize,
-  useCase,
-}) => {
+const auditEngine = (data) => {
+  const {
+    tool,
+    plan,
+    spend,
+    seats,
+    teamSize,
+    useCase,
+  } = data;
 
-  let recommendation = "";
   let savings = 0;
+  let recommendation = "";
   let reason = "";
 
-  // CHATGPT LOGIC
-
+  // ChatGPT Enterprise → Plus downgrade
   if (
     tool === "ChatGPT" &&
-    plan.toLowerCase().includes("team") &&
-    Number(seats) <= 2
+    plan.toLowerCase().includes("enterprise") &&
+    teamSize <= 10
   ) {
-    recommendation = "Switch to ChatGPT Plus";
-    savings = Number(spend) - 40;
+    savings = Math.round(spend * 0.35);
+
+    recommendation = "Switch to ChatGPT Team or Plus";
 
     reason =
-      "Team plan is expensive for small teams. Plus plan provides similar value at lower cost.";
+      "Enterprise plans are often unnecessary for small teams. Team or Plus plans provide similar value at significantly lower cost.";
   }
 
-  // CURSOR LOGIC
-
+  // ChatGPT Team optimization
   else if (
-    tool === "Cursor" &&
-    plan.toLowerCase().includes("business") &&
-    Number(seats) <= 3
+    tool === "ChatGPT" &&
+    plan.toLowerCase().includes("team") &&
+    teamSize < 8
   ) {
-    recommendation = "Downgrade to Cursor Pro";
+    savings = Math.round(spend * 0.2);
 
-    savings = Number(spend) - 60;
+    recommendation = "Reduce Team Seats or Switch to Plus";
 
     reason =
-      "Cursor Business is optimized for larger organizations with collaboration needs.";
+      "Small teams can reduce costs by consolidating seats or moving selected users to Plus plans.";
   }
 
-  // CLAUDE LOGIC
-
+  // Claude optimization
   else if (
     tool === "Claude" &&
-    useCase === "Writing"
+    spend > 300
   ) {
-    recommendation = "Consider Claude Pro instead of higher enterprise tiers";
+    savings = Math.round(spend * 0.25);
 
-    savings = Number(spend) * 0.25;
+    recommendation = "Optimize Claude Usage";
 
     reason =
-      "Writing-focused workflows generally do not require enterprise-grade AI infrastructure.";
+      "Current Claude usage appears high relative to team size and may benefit from usage consolidation.";
   }
 
-  // COPILOT LOGIC
-
+  // Notion AI optimization
   else if (
-    tool === "GitHub Copilot" &&
-    teamSize < 3
+    tool === "Notion AI" &&
+    seats > teamSize
   ) {
-    recommendation = "Use individual Copilot plans";
+    savings = Math.round(spend * 0.15);
 
-    savings = Number(spend) * 0.20;
+    recommendation = "Remove Unused Seats";
 
     reason =
-      "Small engineering teams usually benefit more from individual plans.";
+      "Detected more purchased seats than active team members.";
   }
 
-  // FALLBACK
-
+  // Default fallback
   else {
-    recommendation = "Your current stack looks optimized";
-
     savings = 0;
+
+    recommendation =
+      "Your current stack looks optimized";
 
     reason =
       "We could not identify any meaningful cost optimizations based on current inputs.";
   }
 
   return {
-    currentSpend: Number(spend),
+    currentSpend: spend,
+    savings,
     recommendation,
-    savings: Math.max(0, Math.round(savings)),
-    annualSavings: Math.max(0, Math.round(savings * 12)),
     reason,
   };
 };
