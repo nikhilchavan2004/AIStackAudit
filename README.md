@@ -1,61 +1,65 @@
 # AIStackAudit
 
-AIStackAudit is a modern AI SaaS cost optimization platform that helps teams analyze AI subscription spending and discover potential savings opportunities.
+AIStackAudit is a premium AI SaaS cost optimization platform designed to help teams and businesses analyze AI subscription expenses, identify unnecessary spending, and discover intelligent cost-saving opportunities.
+
+The platform provides AI-powered recommendations, visual analytics, and shareable audit reports through a modern full-stack MERN architecture.
 
 ---
 
-## Features
+# Features
 
 - AI SaaS spending analysis
-- Monthly & annual savings calculation
+- Smart monthly & annual savings estimation
 - AI-generated optimization recommendations
-- Shareable audit reports
-- Interactive analytics charts
-- Lead capture system
-- Responsive premium UI
-- Full-stack MERN architecture
+- Shareable audit report links
+- Interactive savings visualization charts
+- Lead capture & report saving system
+- Premium futuristic UI design
+- Fully responsive across devices
+- Full-stack MERN implementation
+- Live deployed production application
 
 ---
 
-## Tech Stack
+# Tech Stack
 
-### Frontend
+## Frontend
 - React.js
 - Vite
 - Tailwind CSS
 - Recharts
+- React Router DOM
+- Axios
+- Lucide React Icons
 
-### Backend
+## Backend
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
+- OpenAI API
+- Resend API
 
-### Deployment
+## Deployment
 - Vercel (Frontend)
 - Render (Backend)
+- MongoDB Atlas (Database)
 
 ---
 
-## Live Demo
+# Live Demo
 
-### Frontend
+## Frontend
 https://ai-stack-audit-eta.vercel.app/
 
-### Backend
+## Backend API
 https://aistackaudit-backend1.onrender.com/
 
 ---
 
-## Screenshots
+# Installation & Setup
 
-Add screenshots here later.
-
----
-
-## Installation
-
-### Clone Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/nikhilchavan2004/AIStackAudit.git
