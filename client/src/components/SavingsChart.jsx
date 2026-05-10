@@ -9,17 +9,16 @@ import {
 
 const SavingsChart = ({ result }) => {
 
-  const data = [
-    {
-      name: "Current Spend",
-      amount: result.currentSpend || result.spend,
-    },
-    {
-      name: "Potential Savings",
-      amount: result.savings,
-    },
-  ];
-
+ const data = [
+  {
+    name: "Current Spend",
+    amount: Number(result.spend),
+  },
+  {
+    name: "Potential Savings",
+    amount: Number(result.savings),
+  },
+];
   return (
 
     <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 mt-10">

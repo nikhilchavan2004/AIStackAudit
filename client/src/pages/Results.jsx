@@ -133,7 +133,7 @@ const copyLink = async () => {
     </p>
 
     <h3 className="text-4xl font-bold">
-      ${result.currentSpend || result.spend}
+      ${result.spend}
     </h3>
 
   </div>
@@ -180,7 +180,7 @@ const copyLink = async () => {
               </p>
 
               <h3 className="text-2xl font-semibold">
-                ${result.currentSpend || result.spend}
+                ${result.spend}
               </h3>
             </div>
 
