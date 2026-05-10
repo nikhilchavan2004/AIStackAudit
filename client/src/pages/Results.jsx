@@ -110,9 +110,10 @@ const copyLink = async () => {
             ${result.savings}/mo
           </h1>
 
-          <p className="text-zinc-400 text-xl">
-            Potential Annual Savings: ${result.annualSavings}
-          </p>
+        <p className="text-zinc-400 text-xl">
+  Potential Annual Savings: $
+  {(result.savings || 0) * 12}
+</p>
  <button
   onClick={copyLink}
   className="mt-6 flex items-center gap-2 bg-white text-black px-5 py-3 rounded-xl font-semibold hover:bg-gray-200 transition"
@@ -157,7 +158,7 @@ const copyLink = async () => {
     </p>
 
     <h3 className="text-4xl font-bold">
-      ${result.annualSavings}
+     ${(result.savings || 0) * 12}
     </h3>
 
   </div>
